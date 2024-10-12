@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Image Carousel with Reveal.js</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
     <style>
         .reveal .slides section img {
-            width: 100%;
             max-width: 80%;
             height: auto;
             display: block;
@@ -42,8 +40,6 @@
                     progress: true,
                     slideNumber: true,
                     hash: true,
-                    responsive: true,
-                    mobileSlideScaling: 0.75,
                     transition: 'fade' // Use 'fade', 'slide', 'convex', 'concave', 'zoom' for different effects
                 });
             })
