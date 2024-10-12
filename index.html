@@ -14,19 +14,6 @@
             display: block;
             margin: 0 auto;
         }
-
-        @media (max-width: 768px) {
-            .reveal .slides section img {
-                max-width: 90%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .reveal .slides section img {
-                max-width: 100%;
-                padding: 0 10px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -56,11 +43,8 @@
                     slideNumber: true,
                     hash: true,
                     responsive: true,
-                    width: '100%',
-                    height: '100%',
-                    margin: 0.1,
                     mobileSlideScaling: 0.75,
-                    transition: 'slide'
+                    transition: 'fade' // Use 'fade', 'slide', 'convex', 'concave', 'zoom' for different effects
                 });
             })
             .catch(error => console.error('Error loading images:', error));
