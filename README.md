@@ -36,7 +36,7 @@ To contain the list of new images, pay attention to the image extensions. Images
 
 Your image carousel should be available at `https://{{NEW_GITHUB_OWNER}}.github.io/{{NEW_REPO_NAME}}`
 
-### 6. Change slide transition
+### 🔀 Changing slide transition style
 
 You can update the `index.html` file to use one of the [supported revealjs transitions](https://revealjs.com/transitions/)
 
