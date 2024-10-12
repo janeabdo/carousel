@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel with Reveal.js</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
+    <style>
+        .reveal .slides section img {
+            width: 80%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides" id="slides-container">
+            <!-- Slides will be added dynamically -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
+    <script>
+        fetch('images.json')
+            .then(response => response.json())
+            .then(imageFiles => {
+                const slidesContainer = document.getElementById('slides-container');
+                imageFiles.forEach(fileName => {
+                    const section = document.createElement('section');
+                    const img = document.createElement('img');
+                    img.src = `img/${fileName}`;
+                    img.alt = fileName;
+                    section.appendChild(img);
+                    slidesContainer.appendChild(section);
+                });
+
+                // Initialize Reveal.js
+                Reveal.initialize({
+                    controls: true,
+                    progress: true,
+                    slideNumber: true,
+                    hash: true,
+                    transition: 'slide'
+                });
+            })
+            .catch(error => console.error('Error loading images:', error));
+    </script>
+</body>
+</html>
