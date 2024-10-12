@@ -1,2 +1,2 @@
 # revealjs
-Carousel template
+A simple image carousel template
