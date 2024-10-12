@@ -39,8 +39,16 @@
                     controls: true,
                     progress: true,
                     slideNumber: true,
-                    hash: true,
-                    transition: 'fade' // Use 'fade', 'slide', 'convex', 'concave', 'zoom' for different effects
+                    hash: false, // Disable hash to prevent loading a specific slide based on the URL
+                    responsive: true,
+                    width: '100%',
+                    height: '100%',
+                    margin: 0.1,
+                    mobileSlideScaling: 0.75,
+                    transition: 'slide',
+                    // Start from the first slide explicitly
+                    history: false, // Ensure the history plugin does not affect the slide position
+                    embedded: false, // Optional: If you're embedding the slideshow, set to false
                 });
             })
             .catch(error => console.error('Error loading images:', error));
