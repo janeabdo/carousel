@@ -51,11 +51,11 @@
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
     <script>
         fetch('images.json')
-    .then(response => response.json())
-    .then(images => {
-        const slidesContainer = document.getElementById('slides-container');
-        images.forEach(image => {
-            const section = document.createElement('section');
+        .then(response => response.json())
+        .then(images => {
+            const slidesContainer = document.getElementById('slides-container');
+            images.forEach(image => {
+                const section = document.createElement('section');
 
             // Create year element
             const yearDiv = document.createElement('div');
