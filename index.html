@@ -6,9 +6,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
     <style>
+        .reveal .slides section {
+            position: relative;
+        }
         .reveal .slides section img {
-            max-width: 80%;
-            height: auto;
+            width: 800px;  
+            height: 600px; 
+            object-fit: contain; 
             display: block;
             margin: 0 auto;
         }
@@ -16,6 +20,14 @@
             text-align: center;
             margin-top: 10px;
             font-size: 18px;
+            color: #fff;
+        }
+        .reveal .slides section .year {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            font-weight: bold;
             color: #fff;
         }
     </style>
@@ -39,10 +51,15 @@
                     const img = document.createElement('img');
                     img.src = `https://raw.githubusercontent.com/janeabdo/carousel/refs/heads/main/img/${file.fileName}`;
                     
+                    const year = document.createElement('div');
+                    year.classList.add('year');
+                    year.textContent = file.year;
+
                     const caption = document.createElement('div');
                     caption.classList.add('caption');
-                    caption.innerHTML = `<strong>${file.year}</strong> - ${file.text}`;
+                    caption.innerHTML = `${file.text}`;
 
+                    section.appendChild(year);
                     section.appendChild(img);
                     section.appendChild(caption);
                     slidesContainer.appendChild(section);
