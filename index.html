@@ -4,31 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/blood.css" id="theme">
     <style>
-        .reveal .slides section {
-            position: relative;
-        }
         .reveal .slides section img {
             width: 800px;  
-            height: 600px; 
-            object-fit: contain; 
+            height: 400px; 
+            object-fit: contain;
             display: block;
-            margin: 0 auto;
+            margin: 50px auto 0 auto;
         }
         .reveal .slides section .caption {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 18px;
+            text-align: center; 
+            margin-top: 20px;
+            font-size: 22px;
             color: #fff;
         }
         .reveal .slides section .year {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 24px;
+            top: -25px;
+            left: 0px;
+            font-size: 35px;
             font-weight: bold;
             color: #fff;
+            padding: 10px 20px;
+            border: 2px solid #fff; 
+            border-radius: 5px; 
         }
     </style>
 </head>
@@ -59,9 +59,9 @@
                     caption.classList.add('caption');
                     caption.innerHTML = `${file.text}`;
 
-                    section.appendChild(year);
                     section.appendChild(img);
                     section.appendChild(caption);
+                    section.appendChild(year);
                     slidesContainer.appendChild(section);
                 });
 
