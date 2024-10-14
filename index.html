@@ -6,39 +6,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
     <style>
-        /* Ensure the slides are flex containers */
-        .reveal .slides section {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Centers vertically */
-            align-items: center; /* Centers horizontally */
-            height: 100vh; /* Full height of viewport */
-        }
-
         .reveal .slides section img {
             max-width: 80%;
             height: auto;
             display: block;
             margin: 0 auto;
         }
-
-        /* Styling for year and text */
-        .reveal .slides section .year {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            color: white;
-            font-weight: bold;
-        }
-
-        .reveal .slides section .text {
-            margin-top: 20px;
+        .reveal .slides section .caption {
             text-align: center;
-            color: white;
-            font-size: 16px;
+            margin-top: 10px;
+            font-size: 18px;
+            color: #fff;
         }
-
     </style>
 </head>
 <body>
@@ -51,60 +30,40 @@
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
     <script>
         fetch('images.json')
-        .then(response => response.json())
-        .then(images => {
-            const slidesContainer = document.getElementById('slides-container');
-            images.forEach(image => {
-                const section = document.createElement('section');
+            .then(response => response.json())
+            .then(imageFiles => {
+                const slidesContainer = document.getElementById('slides-container');
+                imageFiles.forEach(file => {
+                    const section = document.createElement('section');
+                    
+                    const img = document.createElement('img');
+                    img.src = `https://raw.githubusercontent.com/janeabdo/carousel/refs/heads/main/img/${file.fileName}`;
+                    
+                    const caption = document.createElement('div');
+                    caption.classList.add('caption');
+                    caption.innerHTML = `<strong>${file.year}</strong> - ${file.text}`;
 
-            // Create year element
-            const yearDiv = document.createElement('div');
-            yearDiv.textContent = image.year;
-            yearDiv.style.position = 'absolute';
-            yearDiv.style.top = '10px';
-            yearDiv.style.left = '10px';
-            yearDiv.style.color = 'white';
-            yearDiv.style.fontWeight = 'bold';
+                    section.appendChild(img);
+                    section.appendChild(caption);
+                    slidesContainer.appendChild(section);
+                });
 
-            // Create image element
-            const img = document.createElement('img');
-            img.src = `https://github.com/janeabdo/carousel/raw/main/img/${image.fileName}`;
-
-            // Create text element
-            const textDiv = document.createElement('div');
-            textDiv.textContent = image.text;
-            textDiv.style.textAlign = 'center';
-            textDiv.style.marginTop = '10px';
-            textDiv.style.color = 'white';
-            textDiv.style.fontSize = '16px';
-
-            // Append year, image, and text to the section
-            section.appendChild(yearDiv);
-            section.appendChild(img);
-            section.appendChild(textDiv);
-
-            slidesContainer.appendChild(section);
-        });
-
-        // Re-sync Reveal after adding all the slides
-        Reveal.sync();
-
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            slideNumber: true,
-            hash: false,
-            responsive: true,
-            width: '100%',
-            height: '100%',
-            margin: 0.1,
-            mobileSlideScaling: 0.75,
-            transition: 'slide',
-            history: false,
-            embedded: false,
-        });
-    })
-    .catch(error => console.error('Error loading images:', error));
-    </script>    
+                Reveal.initialize({
+                    controls: true,
+                    progress: true,
+                    slideNumber: true,
+                    hash: false,
+                    responsive: true,
+                    width: '100%',
+                    height: '100%',
+                    margin: 0.1,
+                    mobileSlideScaling: 0.75,
+                    transition: 'slide',
+                    history: false,
+                    embedded: false,
+                });
+            })
+            .catch(error => console.error('Error loading images:', error));
+    </script>
 </body>
 </html>
