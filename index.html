@@ -6,14 +6,37 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
     <style>
+        /* Ensure the slides are flex containers */
         .reveal .slides section {
-           position: relative;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centers vertically */
+            align-items: center; /* Centers horizontally */
+            height: 100vh; /* Full height of viewport */
         }
+
         .reveal .slides section img {
             max-width: 80%;
             height: auto;
             display: block;
             margin: 0 auto;
+        }
+
+        /* Styling for year and text */
+        .reveal .slides section .year {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .reveal .slides section .text {
+            margin-top: 20px;
+            text-align: center;
+            color: white;
+            font-size: 16px;
         }
 
     </style>
@@ -37,11 +60,7 @@
                     // Create year element
                     const yearDiv = document.createElement('div');
                     yearDiv.textContent = image.year;
-                    yearDiv.style.position = 'absolute';
-                    yearDiv.style.top = '10px';
-                    yearDiv.style.left = '10px';
-                    yearDiv.style.color = 'white';
-                    yearDiv.style.fontWeight = 'bold';
+                    yearDiv.classList.add('year');
     
                     // Create image element
                     const img = document.createElement('img');
@@ -50,10 +69,7 @@
                     // Create text element
                     const textDiv = document.createElement('div');
                     textDiv.textContent = image.text;
-                    textDiv.style.textAlign = 'center';
-                    textDiv.style.marginTop = '10px';
-                    textDiv.style.color = 'white';
-                    textDiv.style.fontSize = '16px';
+                    textDiv.classList.add('text');
     
                     // Append year, image, and text to the section
                     section.appendChild(yearDiv);
@@ -82,4 +98,3 @@
     </script>    
 </body>
 </html>
-
