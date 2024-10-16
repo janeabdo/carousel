@@ -47,10 +47,15 @@
                 const slidesContainer = document.getElementById('slides-container');
                 imageFiles.forEach(file => {
                     const section = document.createElement('section');
-                    
+
+                    const link = document.createElement('a');
+                    link.href = file.link;
+                    link.target = "_blank";
+
                     const img = document.createElement('img');
                     img.src = `https://raw.githubusercontent.com/janeabdo/carousel/refs/heads/main/img/${file.fileName}`;
-                    
+                    img.alt = file.text;
+
                     const year = document.createElement('div');
                     year.classList.add('year');
                     year.textContent = file.year;
@@ -59,7 +64,8 @@
                     caption.classList.add('caption');
                     caption.innerHTML = `${file.text}`;
 
-                    section.appendChild(img);
+                    link.appendChild(img);
+                    section.appendChild(link);
                     section.appendChild(caption);
                     section.appendChild(year);
                     slidesContainer.appendChild(section);
